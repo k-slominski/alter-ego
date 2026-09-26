@@ -22,6 +22,21 @@
     }
   });
 
+  // Copy bank account number
+  document.querySelectorAll('[data-copy]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var label = btn.querySelector('span');
+      function done() {
+        btn.classList.add('copied');
+        label.textContent = 'Skopiowano';
+        setTimeout(function () { btn.classList.remove('copied'); label.textContent = 'Kopiuj'; }, 2000);
+      }
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(btn.getAttribute('data-copy')).then(done);
+      }
+    });
+  });
+
   // Gentle reveal of sections
   if ('IntersectionObserver' in window) {
     var items = document.querySelectorAll('.section > .container');

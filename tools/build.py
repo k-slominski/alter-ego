@@ -17,6 +17,12 @@ PHONE = "609 88 17 88"
 PHONE_HREF = "tel:+48609881788"
 EMAIL = "kontakt@alterego-torun.pl"
 FACEBOOK = "https://www.facebook.com/alterego.torun/"
+SITE_URL = "https://www.alterego-torun.pl/"
+ADDRESS_Q = "ALTER%20EGO%20Gabinet%20Psychoterapii%2C%20Szosa%20Che%C5%82mi%C5%84ska%20154E%2C%2087-100%20Toru%C5%84"
+MAP_EMBED = "https://www.google.com/maps/embed?origin=mfe&pb=!1m3!2m1!1sSzosa+Che%C5%82mi%C5%84ska+154E,+87-100+Toru%C5%84!6i16"
+MAP_OPEN = "https://maps.google.com/maps?cid=1051423359503064108"
+MAP_ROUTE = f"https://www.google.com/maps/dir/?api=1&destination={ADDRESS_Q}"
+VCARD = "assets/alter-ego-bozena-slominska.vcf"
 
 # (file, label) – order as in the original menu
 NAV = [
@@ -37,6 +43,9 @@ ICON = {
     "mail": '<svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="M3 7l9 6 9-6"/></svg>',
     "pin": '<svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>',
     "fb": '<svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 8h3V4h-3a4 4 0 0 0-4 4v3H7v4h3v6h4v-6h3l1-4h-4V8z"/></svg>',
+    "route": '<svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="19" r="2"/><circle cx="18" cy="5" r="2"/><path d="M8 19h8.5a3.5 3.5 0 0 0 0-7h-9a3.5 3.5 0 0 1 0-7H16"/></svg>',
+    "card": '<svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1.5"/><circle cx="9" cy="11" r="2"/><path d="M5.5 16c.6-1.6 2-2.5 3.5-2.5s2.9.9 3.5 2.5M15 10h3M15 13h3"/></svg>',
+    "copy": '<svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="1.5"/><path d="M16 8V5.5A1.5 1.5 0 0 0 14.5 4h-9A1.5 1.5 0 0 0 4 5.5v9A1.5 1.5 0 0 0 5.5 16H8"/></svg>',
     "arrow": '<svg class="i i-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>',
 }
 
@@ -49,6 +58,39 @@ def nav_html(current):
         cls = ' class="active" aria-current="page"' if href == current else ""
         items.append(f'<a href="{href}"{cls}{attrs}>{label}</a>')
     return "\n        ".join(items)
+
+
+def map_frame():
+    return f"""<div class="map">
+          <iframe title="Mapa – ALTER EGO, Szosa Chełmińska 154E, Toruń"
+            src="{MAP_EMBED}"
+            loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+        </div>"""
+
+
+JSON_LD = f"""<script type="application/ld+json">
+  {{
+    "@context": "https://schema.org",
+    "@type": "MedicalBusiness",
+    "name": "ALTER EGO – Gabinet Psychoterapii i Rozwoju Osobistego Bożena Słomińska",
+    "url": "{SITE_URL}",
+    "image": "{SITE_URL}assets/img/bozena-slominska-portret.jpg",
+    "logo": "{SITE_URL}assets/img/drzewo.png",
+    "telephone": "+48 609 881 788",
+    "email": "{EMAIL}",
+    "address": {{
+      "@type": "PostalAddress",
+      "streetAddress": "Szosa Chełmińska 154E/2",
+      "postalCode": "87-100",
+      "addressLocality": "Toruń",
+      "addressCountry": "PL"
+    }},
+    "geo": {{ "@type": "GeoCoordinates", "latitude": 53.0302896, "longitude": 18.5903511 }},
+    "hasMap": "{MAP_OPEN}",
+    "sameAs": ["{FACEBOOK}"],
+    "founder": {{ "@type": "Person", "name": "Bożena Słomińska", "jobTitle": "psychoterapeuta" }}
+  }}
+  </script>"""
 
 
 def layout(filename, title, description, body, eyebrow=None, heading=None, lead=None):
@@ -72,12 +114,22 @@ def layout(filename, title, description, body, eyebrow=None, heading=None, lead=
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{full_title}</title>
   <meta name="description" content="{description}">
+  <link rel="canonical" href="{SITE_URL}{'' if filename == 'index.html' else filename}">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pl_PL">
+  <meta property="og:site_name" content="ALTER EGO – Gabinet Psychoterapii">
+  <meta property="og:title" content="{full_title}">
+  <meta property="og:description" content="{description}">
+  <meta property="og:url" content="{SITE_URL}{'' if filename == 'index.html' else filename}">
+  <meta property="og:image" content="{SITE_URL}assets/img/bozena-slominska-portret.jpg">
+  <meta name="theme-color" content="#f8f7f3">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="icon" href="assets/img/favicon.png" type="image/png">
   <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  {JSON_LD if filename in ('index.html', 'kontakt.html') else ''}
 </head>
 <body>
   <a class="skip" href="#main">Przejdź do treści</a>
@@ -122,7 +174,8 @@ def layout(filename, title, description, body, eyebrow=None, heading=None, lead=
       </div>
       <div>
         <h2 class="footer-title">Adres</h2>
-        <p>Szosa Chełmińska 154E/2<br>87-100 Toruń</p>
+        <p>Szosa Chełmińska 154E/2<br>87-100 Toruń<br>
+          <a href="{MAP_ROUTE}" target="_blank" rel="noopener">Wyznacz trasę</a></p>
         <p><a href="{FACEBOOK}" target="_blank" rel="noopener">facebook.com/alterego.torun</a></p>
       </div>
       <div class="footer-cert">
@@ -135,6 +188,12 @@ def layout(filename, title, description, body, eyebrow=None, heading=None, lead=
       <p>© Alter Ego - Toruń Psychoterapia</p>
     </div>
   </footer>
+
+  <nav class="quickbar" aria-label="Szybki kontakt">
+    <a href="{PHONE_HREF}">{ICON['phone']}<span>Zadzwoń</span></a>
+    <a href="{MAP_ROUTE}" target="_blank" rel="noopener">{ICON['route']}<span>Dojazd</span></a>
+    <a href="mailto:{EMAIL}">{ICON['mail']}<span>E-mail</span></a>
+  </nav>
 
   <script src="assets/js/main.js"></script>
 </body>
@@ -219,16 +278,22 @@ HOME = f"""
       </div>
     </section>
 
-    <section class="section cta">
-      <div class="container cta-inner">
-        <div>
-          <h2>Zapraszam do kontaktu</h2>
-          <p class="muted">Gdy nie mogę odebrać, oddzwaniam.</p>
+    <section class="section visit" id="dojazd">
+      <div class="container visit-grid">
+        <div class="visit-text">
+          <p class="eyebrow">Dojazd i kontakt</p>
+          <h2>Zapraszam do gabinetu</h2>
+          <ul class="contact-list">
+            <li>{ICON['pin']}<span><strong>Szosa Chełmińska 154E/2</strong><br>87-100 Toruń</span></li>
+            <li>{ICON['phone']}<span><a href="{PHONE_HREF}">tel. {PHONE}</a><br><small class="muted">Gdy nie mogę odebrać, oddzwaniam.</small></span></li>
+            <li>{ICON['mail']}<a href="mailto:{EMAIL}">{EMAIL}</a></li>
+          </ul>
+          <div class="actions">
+            <a href="{MAP_ROUTE}" class="btn btn-primary" target="_blank" rel="noopener">{ICON['route']} Wyznacz trasę</a>
+            <a href="{MAP_OPEN}" class="btn btn-ghost" target="_blank" rel="noopener">{ICON['pin']} Otwórz w Mapach Google</a>
+          </div>
         </div>
-        <div class="actions">
-          <a href="{PHONE_HREF}" class="btn btn-primary">{ICON['phone']} {PHONE}</a>
-          <a href="kontakt.html" class="btn btn-ghost">{ICON['pin']} Dojazd i kontakt</a>
-        </div>
+        {map_frame()}
       </div>
     </section>
 """
@@ -466,7 +531,7 @@ ORIENT = f"""
 # --------------------------------------------------------------------------
 # Cennik
 # --------------------------------------------------------------------------
-CENNIK = """
+CENNIK = f"""
     <section class="section section-tight">
       <div class="container narrow">
         <dl class="prices">
@@ -494,7 +559,10 @@ CENNIK = """
         <p class="note">W uzasadnionych przypadkach można liczyć na zniżkę lub raty.</p>
         <div class="account">
           <span class="eyebrow">Numer konta</span>
-          <span class="account-no">85 1140 2004 0000 3902 5369 6072</span>
+          <div class="account-row">
+            <span class="account-no">85 1140 2004 0000 3902 5369 6072</span>
+            <button type="button" class="btn btn-ghost btn-sm" data-copy="85114020040000390253696072">{ICON['copy']} <span>Kopiuj</span></button>
+          </div>
         </div>
       </div>
     </section>
@@ -514,13 +582,13 @@ KONTAKT = f"""
             <li>{ICON['mail']}<a href="mailto:{EMAIL}">{EMAIL}</a></li>
             <li>{ICON['fb']}<a href="{FACEBOOK}" target="_blank" rel="noopener">facebook.com/alterego.torun</a></li>
           </ul>
-          <a class="btn btn-ghost" href="https://maps.google.com/maps?cid=1051423359503064108" target="_blank" rel="noopener">{ICON['pin']} Zobacz większą mapę</a>
+          <div class="actions">
+            <a class="btn btn-primary" href="{MAP_ROUTE}" target="_blank" rel="noopener">{ICON['route']} Wyznacz trasę</a>
+            <a class="btn btn-ghost" href="{MAP_OPEN}" target="_blank" rel="noopener">{ICON['pin']} Zobacz większą mapę</a>
+            <a class="btn btn-ghost" href="{VCARD}" download>{ICON['card']} Zapisz kontakt w telefonie</a>
+          </div>
         </div>
-        <div class="map">
-          <iframe title="Mapa – ALTER EGO, Szosa Chełmińska 154E, Toruń"
-            src="https://maps.google.com/maps?q=Szosa%20Che%C5%82mi%C5%84ska%20154E%2C%2087-100%20Toru%C5%84&z=15&output=embed"
-            loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
+        {map_frame()}
       </div>
     </section>
 """
@@ -556,11 +624,38 @@ PAGES = [
 ]
 
 
+NOT_FOUND = """
+    <section class="section section-tight">
+      <div class="container narrow">
+        <p>Strona, której szukasz, nie istnieje lub zmieniła adres.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="index.html">Strona główna</a>
+          <a class="btn btn-ghost" href="kontakt.html">Kontakt</a>
+        </div>
+      </div>
+    </section>
+"""
+
+
 def main():
     for filename, title, desc, body, eyebrow, heading, lead in PAGES:
         (ROOT / filename).write_text(
             layout(filename, title, desc, body, eyebrow, heading, lead), encoding="utf-8")
         print("wrote", filename)
+
+    (ROOT / "404.html").write_text(
+        layout("404.html", "nie znaleziono strony", "Nie znaleziono strony.", NOT_FOUND,
+               "błąd 404", "Nie znaleziono strony"), encoding="utf-8")
+
+    urls = "\n".join(
+        f"  <url><loc>{SITE_URL}{'' if f == 'index.html' else f}</loc></url>" for f, *_ in PAGES)
+    (ROOT / "sitemap.xml").write_text(
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+        f"{urls}\n</urlset>\n", encoding="utf-8")
+    (ROOT / "robots.txt").write_text(
+        f"User-agent: *\nAllow: /\n\nSitemap: {SITE_URL}sitemap.xml\n", encoding="utf-8")
+    print("wrote 404.html, sitemap.xml, robots.txt")
 
 
 if __name__ == "__main__":

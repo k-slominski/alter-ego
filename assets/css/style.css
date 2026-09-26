@@ -47,7 +47,7 @@ h1, h2, h3 {
 }
 h1 { font-size: clamp(2.2rem, 4.6vw, 3.3rem); }
 h2 { font-size: clamp(1.7rem, 3vw, 2.2rem); margin-top: 1.6em; }
-h2:first-child { margin-top: 0; }
+h2:first-child, .eyebrow + h2 { margin-top: 0; }
 h3 { font-size: 1.4rem; margin-top: 1.5em; }
 
 p { margin: 0 0 1.1em; }
@@ -468,4 +468,42 @@ p { margin: 0 0 1.1em; }
   .footer-grid { grid-template-columns: 1fr; gap: 28px; }
   .lead-text { font-size: 1.3rem; }
   .account-no { font-size: 1rem; letter-spacing: .03em; }
+}
+
+/* ---------- Dojazd (home) ---------- */
+.visit { border-top: 1px solid var(--line); }
+.visit-grid { display: grid; grid-template-columns: 1fr 1.3fr; gap: 56px; align-items: stretch; }
+.visit .contact-list { margin: 1.2rem 0 1.8rem; }
+.visit .contact-list .i { margin-top: 5px; color: var(--accent); }
+
+/* ---------- Copy account number ---------- */
+.account-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.btn-sm { padding: 7px 14px; font-size: .85rem; cursor: pointer; font-family: inherit; }
+.btn-sm.copied { border-color: var(--accent); color: var(--accent); }
+
+/* ---------- Mobile quick-contact bar ---------- */
+.quickbar { display: none; }
+@media (max-width: 860px) {
+  .visit-grid { grid-template-columns: 1fr; gap: 32px; }
+  .quickbar {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    position: fixed;
+    left: 0; right: 0; bottom: 0;
+    z-index: 30;
+    background: rgba(248, 247, 243, .97);
+    backdrop-filter: blur(8px);
+    border-top: 1px solid var(--line);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  .quickbar a {
+    display: flex; flex-direction: column; align-items: center; gap: 2px;
+    padding: 9px 0 8px;
+    font-size: .74rem;
+    text-decoration: none;
+    color: var(--ink-soft);
+  }
+  .quickbar a:first-child { color: var(--accent); }
+  .quickbar .i { width: 20px; height: 20px; }
+  body { padding-bottom: 60px; }
 }
