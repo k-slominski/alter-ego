@@ -1,7 +1,14 @@
 (function () {
-  var header = document.querySelector('.site-header');
   var toggle = document.querySelector('.nav-toggle');
   var nav = document.getElementById('nav');
+
+  // Expose header height for sticky sub-navigation and anchor offsets
+  var header = document.querySelector('.site-header');
+  function setHeaderHeight() {
+    document.documentElement.style.setProperty('--hdr', header.offsetHeight + 'px');
+  }
+  setHeaderHeight();
+  window.addEventListener('resize', setHeaderHeight);
 
   // Mobile menu
   toggle.addEventListener('click', function () {
@@ -15,16 +22,9 @@
     }
   });
 
-  // Header border on scroll
-  function onScroll() {
-    header.classList.toggle('scrolled', window.scrollY > 8);
-  }
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
-
   // Gentle reveal of sections
   if ('IntersectionObserver' in window) {
-    var items = document.querySelectorAll('.section .container');
+    var items = document.querySelectorAll('.section > .container');
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
@@ -32,12 +32,10 @@
           io.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.12 });
+    }, { threshold: 0.08 });
     items.forEach(function (el) {
       el.classList.add('reveal');
       io.observe(el);
     });
   }
-
-  document.getElementById('year').textContent = new Date().getFullYear();
 })();

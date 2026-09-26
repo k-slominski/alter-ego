@@ -4,212 +4,122 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>ALTER EGO – Gabinet Psychoterapii Bożena Słomińska – Toruń</title>
-  <meta name="description" content="ALTER EGO – Gabinet Psychoterapii i Rozwoju Osobistego. Bożena Słomińska, certyfikowana psychoterapeutka. Psychoterapia indywidualna, grupowa, terapia par. Toruń, Szosa Chełmińska 154E.">
+  <meta name="description" content="Gabinet Psychoterapii i Rozwoju Osobistego ALTER EGO w Toruniu. Bożena Słomińska – psychoterapia indywidualna, grupowa, terapia par, poradnictwo, interwencja kryzysowa, treningi.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/img/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 </head>
 <body>
+  <a class="skip" href="#main">Przejdź do treści</a>
 
-  <header class="site-header" id="top">
+  <header class="site-header">
     <div class="container header-inner">
-      <a class="brand" href="#top" aria-label="ALTER EGO – strona główna">
-        <img src="assets/img/logo.svg" alt="ALTER EGO" class="brand-logo" width="40" height="40">
+      <a class="brand" href="index.html" aria-label="ALTER EGO – strona główna">
+        <img src="assets/img/drzewo.png" alt="" class="brand-tree" width="52" height="48">
         <span class="brand-text">
           <span class="brand-name">alter ego</span>
-          <span class="brand-sub">Gabinet Psychoterapii i Rozwoju Osobistego</span>
+          <span class="brand-sub">gabinet psychoterapii i rozwoju osobistego – Bożena Słomińska</span>
         </span>
       </a>
       <button class="nav-toggle" aria-expanded="false" aria-controls="nav" aria-label="Menu">
         <span></span><span></span>
       </button>
-      <nav class="nav" id="nav">
-        <a href="#o-mnie">O mnie</a>
-        <a href="#orientacja">Orientacja teoretyczna</a>
-        <a href="#formy-pomocy">Formy pomocy</a>
-        <a href="#cennik">Cennik</a>
-        <a href="#kontakt" class="nav-cta">Kontakt</a>
-      </nav>
     </div>
+    <nav class="nav" id="nav" aria-label="Menu główne">
+      <div class="container nav-inner">
+        <a href="index.html" class="active" aria-current="page">alter ego</a>
+        <a href="https://www.facebook.com/alterego.torun/" target="_blank" rel="noopener">aktualności</a>
+        <a href="komu-pomagam.html">komu pomagam</a>
+        <a href="formy-pomocy.html">formy pomocy</a>
+        <a href="oferta-szkoleniowa.html">oferta szkoleniowa</a>
+        <a href="o-mnie.html">o mnie</a>
+        <a href="wspolpracuje.html">współpracuję</a>
+        <a href="orientacja-teoretyczna.html">orientacja teoretyczna</a>
+        <a href="cennik.html">cennik</a>
+        <a href="kontakt.html">kontakt</a>
+      </div>
+    </nav>
+    <div class="ribbon" aria-hidden="true"></div>
   </header>
 
-  <main>
+  <main id="main">
 
-    <!-- HERO -->
     <section class="hero">
       <div class="container hero-grid">
         <div class="hero-text">
-          <p class="eyebrow">Toruń · Szosa Chełmińska 154E</p>
-          <h1>Gabinet Psychoterapii<br>i Rozwoju Osobistego</h1>
-          <p class="lead">
-            Bożena Słomińska – psychoterapeutka z certyfikatem, trenerka rozwoju osobistego.
-            Psychoterapia indywidualna, grupowa i terapia par.
-          </p>
-          <div class="hero-actions">
-            <a href="tel:+48609881788" class="btn btn-primary">Umów wizytę · 609 881 788</a>
-            <a href="#formy-pomocy" class="btn btn-ghost">Formy pomocy</a>
+          <p class="eyebrow">Toruń · Szosa Chełmińska 154E/2</p>
+          <h1>Gabinet ALTER EGO w Toruniu to miejsce dla ludzi, którzy:</h1>
+          <ul class="hero-points">
+            <li>szukają pomocy, bo przeżywają trudności osobiste,</li>
+            <li>funkcjonują dobrze i szukają możliwości rozwoju.</li>
+          </ul>
+          <div class="actions">
+            <a href="tel:+48609881788" class="btn btn-primary"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a1 1 0 0 1-1 1A16 16 0 0 1 4 5a1 1 0 0 1 1-1"/></svg> 609 88 17 88</a>
+            <a href="mailto:kontakt@alterego-torun.pl" class="btn btn-ghost"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="M3 7l9 6 9-6"/></svg> Napisz wiadomość</a>
           </div>
         </div>
         <figure class="hero-photo">
-          <img src="assets/img/bozena-slominska.jpg" alt="Bożena Słomińska – psychoterapeutka" onerror="this.parentElement.classList.add('no-photo')">
-          <span class="photo-fallback" aria-hidden="true">BS</span>
+          <img src="assets/img/bozena-slominska-portret.jpg" alt="Bożena Słomińska – psychoterapeuta" width="1200" height="1200">
+          <figcaption>Bożena Słomińska<span>psychoterapeuta, trener rozwoju osobistego</span></figcaption>
         </figure>
       </div>
     </section>
 
-    <!-- O MNIE -->
-    <section class="section" id="o-mnie">
-      <div class="container two-col">
-        <div class="col-head">
-          <p class="eyebrow">O mnie</p>
-          <h2>Bożena Słomińska</h2>
+    <section class="section section-alt">
+      <div class="container split">
+        <div class="split-text">
+          <h2>Psychoterapia i rozwój</h2>
+          <p><strong>Tym pierwszym oferuję psychoterapię.</strong> W psychoterapii pomagam klientom znajdować ich własne rozwiązania problemów będących przyczyną dolegliwości lub cierpienia.</p>
+          <p><strong>Tym drugim</strong> pomagam rozpoznawać rzeczywiste możliwości i ograniczenia, zwiększać ich możliwości osiągania swoich celów, pokonywać przeszkody i poprawiać jakość życia.</p>
+          <p>Oferuję między innymi <a href="formy-pomocy.html#psychoterapia-indywidualna">psychoterapię indywidualną</a>, <a href="formy-pomocy.html#psychoterapia-grupowa">psychoterapię grupową</a>, <a href="formy-pomocy.html#terapia-par">terapię par</a>, poradnictwo małżeńskie, <a href="formy-pomocy.html#poradnictwo-rodzinne">rodzinne i wychowawcze</a>, <a href="formy-pomocy.html#interwencja-kryzysowa">pomoc w kryzysach osobistych</a>, <a href="oferta-szkoleniowa.html#trening-interpersonalny">trening interpersonalny</a>, warsztaty i treningi komunikacji, asertywności, szkolenia dla osób pracujących w obszarze pomagania drugiemu człowiekowi.</p>
+          <p class="muted">W trosce o jakość pracy korzystam z superwizji i zawodowych konsultacji.</p>
         </div>
-        <div class="col-body">
-          <p>
-            Jestem psychoterapeutką z certyfikatem Polskiego Towarzystwa Psychoterapii Integratywnej
-            oraz trenerką rozwoju osobistego z rekomendacjami I i II stopnia Polskiego Towarzystwa Psychologicznego.
-          </p>
-          <ul class="list-check">
-            <li>Certyfikat Psychoterapii Integratywnej – Instytut Psychologii Zdrowia Polskiego Towarzystwa Psychologicznego (IPZ PTP)</li>
-            <li>Dyplom ukończenia czteroletniej podyplomowej Profesjonalnej Szkoły Psychoterapii SWPS</li>
-            <li>Rekomendacje trenerskie Polskiego Towarzystwa Psychologicznego do prowadzenia treningów interpersonalnych i warsztatów umiejętności psychospołecznych</li>
-          </ul>
+        <div class="split-media">
+          <figure class="photo photo-lg"><img src="assets/img/bozena-slominska-gabinet.jpg" alt="Bożena Słomińska w gabinecie ALTER EGO"></figure>
+          <figure class="photo photo-sm"><img src="assets/img/gabinet.jpg" alt="Gabinet ALTER EGO w Toruniu"></figure>
         </div>
       </div>
     </section>
 
-    <!-- ORIENTACJA -->
-    <section class="section section-alt" id="orientacja">
-      <div class="container two-col">
-        <div class="col-head">
-          <p class="eyebrow">Orientacja teoretyczna</p>
-          <h2>Podejście integratywne</h2>
-        </div>
-        <div class="col-body">
-          <p>
-            Pracuję w podejściu integratywnym, czerpiąc przede wszystkim z dorobku szkół:
-          </p>
-          <ul class="tags">
-            <li>psychodynamicznej</li>
-            <li>egzystencjalnej</li>
-            <li>humanistycznej</li>
-            <li>Gestalt</li>
-            <li>poznawczo-behawioralnej</li>
-          </ul>
-        </div>
+    <section class="section">
+      <div class="container">
+        <blockquote class="quote">
+          <p>Zapraszam do wspólnego rozpoznawania mapy życia – całej lub fragmentu – wybierania celów wędrówki, wytyczania do nich dróg i porzucania szlaków prowadzących na manowce.</p>
+          <footer>Rozwój jest możliwy przez całe życie.</footer>
+        </blockquote>
       </div>
     </section>
 
-    <!-- FORMY POMOCY -->
-    <section class="section" id="formy-pomocy">
+    <section class="section section-alt">
       <div class="container">
         <div class="section-head">
           <p class="eyebrow">Formy pomocy</p>
           <h2>W czym mogę pomóc</h2>
         </div>
-        <div class="cards">
-          <article class="card">
-            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c0-3.9 3.1-7 7-7s7 3.1 7 7"/></svg>
-            <h3>Psychoterapia indywidualna</h3>
-            <p>Praca nad trudnościami emocjonalnymi, stanami lękowymi i depresyjnymi, kryzysami osobistymi oraz własnym rozwojem.</p>
-          </article>
-          <article class="card">
-            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="8" cy="9" r="3"/><circle cx="16" cy="9" r="3"/><path d="M2.5 20c0-3 2.5-5.5 5.5-5.5S13.5 17 13.5 20M10.5 20c0-3 2.5-5.5 5.5-5.5s5.5 2.5 5.5 5.5"/></svg>
-            <h3>Terapia par</h3>
-            <p>Wsparcie dla par w kryzysie, w trudnościach komunikacyjnych i w odbudowywaniu bliskości.</p>
-          </article>
-          <article class="card">
-            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="6" r="2.5"/><circle cx="5" cy="13" r="2.5"/><circle cx="19" cy="13" r="2.5"/><circle cx="12" cy="19" r="2.5"/></svg>
-            <h3>Psychoterapia grupowa</h3>
-            <p>Program 200 godzin realizowany przez 8 miesięcy – praca w grupie nad relacjami i sobą.</p>
-          </article>
-          <article class="card">
-            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11l8-6 8 6v9H4z"/><path d="M10 20v-5h4v5"/></svg>
-            <h3>Poradnictwo</h3>
-            <p>Poradnictwo małżeńskie, rodzinne i wychowawcze. Pomoc w kryzysach osobistych i rodzinnych.</p>
-          </article>
-          <article class="card">
-            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v10H9l-5 4z"/></svg>
-            <h3>Treningi i warsztaty</h3>
-            <p>Trening interpersonalny, warsztaty komunikacji i asertywności, umiejętności wychowawczych i terapeutycznych.</p>
-          </article>
-          <article class="card">
-            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20V10M12 10c0-3 2-5 6-5 0 4-2 6-6 5zM12 13c0-2.5-1.7-4-5-4 0 3.3 1.7 4.8 5 4"/></svg>
-            <h3>Rozwój osobisty</h3>
-            <p>Szkolenia z zakresu rozwoju osobistego dla osób, które chcą lepiej rozumieć siebie i innych.</p>
-          </article>
+        <div class="tiles">
+          <a class="tile" href="formy-pomocy.html#psychoterapia-indywidualna"><figure class="photo"><img src="assets/img/psychoterapia-indywidualna.jpg" alt=""></figure><span>psychoterapia indywidualna</span></a>
+          <a class="tile" href="formy-pomocy.html#psychoterapia-grupowa"><figure class="photo"><img src="assets/img/psychoterapia-grupowa.jpg" alt=""></figure><span>psychoterapia grupowa</span></a>
+          <a class="tile" href="formy-pomocy.html#terapia-par"><figure class="photo"><img src="assets/img/terapia-par-2.jpg" alt=""></figure><span>terapia par</span></a>
+          <a class="tile" href="formy-pomocy.html#terapia-dda-ddd"><figure class="photo"><img src="assets/img/terapia-dda-ddd.jpg" alt=""></figure><span>terapia DDA i DDD</span></a>
+          <a class="tile" href="formy-pomocy.html#poradnictwo-rodzinne"><figure class="photo"><img src="assets/img/poradnictwo-rodzinne.jpg" alt=""></figure><span>poradnictwo rodzinne</span></a>
+          <a class="tile" href="formy-pomocy.html#interwencja-kryzysowa"><figure class="photo"><img src="assets/img/interwencja-kryzysowa.jpg" alt=""></figure><span>interwencja kryzysowa</span></a>
         </div>
+        <p class="more"><a href="oferta-szkoleniowa.html">Oferta szkoleniowa <svg class="i i-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></p>
       </div>
     </section>
 
-    <!-- CENNIK -->
-    <section class="section section-alt" id="cennik">
-      <div class="container two-col">
-        <div class="col-head">
-          <p class="eyebrow">Cennik</p>
-          <h2>Opłaty</h2>
-        </div>
-        <div class="col-body">
-          <dl class="prices">
-            <div class="price-row">
-              <dt>Psychoterapia indywidualna <span>sesja 50 min</span></dt>
-              <dd>200 zł <small>w soboty 300 zł</small></dd>
-            </div>
-            <div class="price-row">
-              <dt>Terapia par <span>sesja</span></dt>
-              <dd>280 zł <small>w soboty 400 zł</small></dd>
-            </div>
-            <div class="price-row">
-              <dt>Psychoterapia grupowa <span>200 godzin / 8 miesięcy</span></dt>
-              <dd>800 zł / mies. <small>40 zł za godzinę</small></dd>
-            </div>
-            <div class="price-row">
-              <dt>Warsztaty i treningi</dt>
-              <dd>wycena indywidualna</dd>
-            </div>
-          </dl>
-          <p class="muted">W uzasadnionych przypadkach możliwe są zniżki lub płatność w ratach.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- KONTAKT -->
-    <section class="section" id="kontakt">
-      <div class="container">
-        <div class="section-head">
-          <p class="eyebrow">Kontakt</p>
+    <section class="section cta">
+      <div class="container cta-inner">
+        <div>
           <h2>Zapraszam do kontaktu</h2>
+          <p class="muted">Gdy nie mogę odebrać, oddzwaniam.</p>
         </div>
-        <div class="contact-grid">
-          <div class="contact-card">
-            <h3>Bożena Słomińska</h3>
-            <ul class="contact-list">
-              <li>
-                <svg class="icon-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a1 1 0 0 1-1 1A16 16 0 0 1 4 5a1 1 0 0 1 1-1"/></svg>
-                <a href="tel:+48609881788">609 88 17 88</a>
-              </li>
-              <li>
-                <svg class="icon-sm" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M3 6l9 7 9-7"/></svg>
-                <a href="mailto:kontakt@alterego-torun.pl">kontakt@alterego-torun.pl</a>
-              </li>
-              <li>
-                <svg class="icon-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
-                <span>Szosa Chełmińska 154E, lok. 2<br>87-100 Toruń</span>
-              </li>
-              <li>
-                <svg class="icon-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3h7v7M21 3l-9 9M19 14v6H4V5h6"/></svg>
-                <a href="https://www.facebook.com/alterego.torun/" target="_blank" rel="noopener">facebook.com/alterego.torun</a>
-              </li>
-            </ul>
-          </div>
-          <div class="map">
-            <iframe
-              title="Mapa – Szosa Chełmińska 154E, Toruń"
-              src="https://www.google.com/maps?q=Szosa+Che%C5%82mi%C5%84ska+154E,+87-100+Toru%C5%84&output=embed"
-              loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-          </div>
+        <div class="actions">
+          <a href="tel:+48609881788" class="btn btn-primary"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a1 1 0 0 1-1 1A16 16 0 0 1 4 5a1 1 0 0 1 1-1"/></svg> 609 88 17 88</a>
+          <a href="kontakt.html" class="btn btn-ghost"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg> Dojazd i kontakt</a>
         </div>
       </div>
     </section>
@@ -217,9 +127,31 @@
   </main>
 
   <footer class="site-footer">
-    <div class="container footer-inner">
-      <p>© <span id="year">2026</span> ALTER EGO · Gabinet Psychoterapii i Rozwoju Osobistego · Bożena Słomińska</p>
-      <a href="#top">Do góry ↑</a>
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <img src="assets/img/drzewo.png" alt="" width="64" height="59">
+        <p><strong>ALTER EGO</strong><br>Gabinet Psychoterapii<br>i Rozwoju Osobistego</p>
+      </div>
+      <div>
+        <h2 class="footer-title">Kontakt</h2>
+        <p>Bożena Słomińska<br>
+          <a href="tel:+48609881788">tel. 609 88 17 88</a><br>
+          <span class="muted">Gdy nie mogę odebrać, oddzwaniam.</span><br>
+          <a href="mailto:kontakt@alterego-torun.pl">kontakt@alterego-torun.pl</a></p>
+      </div>
+      <div>
+        <h2 class="footer-title">Adres</h2>
+        <p>Szosa Chełmińska 154E/2<br>87-100 Toruń</p>
+        <p><a href="https://www.facebook.com/alterego.torun/" target="_blank" rel="noopener">facebook.com/alterego.torun</a></p>
+      </div>
+      <div class="footer-cert">
+        <a href="http://www.psychologia.edu.pl/" target="_blank" rel="noopener" title="Instytut Psychologii Zdrowia PTP">
+          <img src="assets/img/logo-ipz-ptp.png" alt="Instytut Psychologii Zdrowia PTP" width="150" height="72">
+        </a>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>© Alter Ego - Toruń Psychoterapia</p>
     </div>
   </footer>
 

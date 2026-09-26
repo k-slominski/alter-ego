@@ -1,20 +1,36 @@
 # ALTER EGO – Gabinet Psychoterapii Bożena Słomińska (Toruń)
 
-Nowa, minimalistyczna wersja strony www.alterego-torun.pl.
-Statyczny serwis (HTML + CSS + JS, bez budowania) – wystarczy otworzyć `index.html`
-lub opublikować katalog np. przez GitHub Pages (Settings → Pages → branch, folder `/`).
+Nowa, minimalistyczna wersja strony [www.alterego-torun.pl](https://www.alterego-torun.pl/).
+Zachowane są wszystkie treści, zdjęcia, logotypy i dane kontaktowe z oryginału –
+zmieniony jest wyłącznie wygląd.
+
+Statyczny serwis (HTML + CSS + odrobina JS). Nie wymaga budowania – wystarczy otworzyć
+`index.html` albo opublikować katalog, np. przez GitHub Pages
+(Settings → Pages → Deploy from a branch → folder `/`).
+
+## Strony
+| plik | odpowiednik w starej stronie |
+|---|---|
+| `index.html` | alter ego (strona główna) |
+| `komu-pomagam.html` | komu pomagam |
+| `formy-pomocy.html` | formy pomocy + 6 podstron (psychoterapia indywidualna, grupowa, terapia par, terapia DDA i DDD, poradnictwo rodzinne, interwencja kryzysowa) |
+| `oferta-szkoleniowa.html` | oferta szkoleniowa + trening interpersonalny, programy rozwoju osobistego |
+| `o-mnie.html` | o mnie |
+| `wspolpracuje.html` | współpracuję |
+| `orientacja-teoretyczna.html` | orientacja teoretyczna |
+| `cennik.html` | cennik |
+| `kontakt.html` | kontakt |
+| – | aktualności → link do profilu na Facebooku (jak w oryginale) |
+
+## Edycja treści
+Wspólny nagłówek, menu i stopka są generowane skryptem – treść stron znajduje się w
+`tools/build.py`. Po zmianie uruchom:
+
+```sh
+python3 tools/build.py
+```
 
 ## Struktura
-- `index.html` – jedna strona z sekcjami: O mnie, Orientacja teoretyczna, Formy pomocy, Cennik, Kontakt
-- `assets/css/style.css` – style (paleta: ciepła biel, grafit, stonowana szałwia; Cormorant Garamond + Inter)
+- `assets/css/style.css` – style (paleta: ciepła biel, grafit, zieleń drzewa z logo)
 - `assets/js/main.js` – menu mobilne, delikatne pojawianie się sekcji
-- `assets/img/` – logo, favicon, zdjęcia
-
-## Do uzupełnienia z oryginalnej strony
-Oryginalna strona nie była dostępna z środowiska, w którym powstał projekt,
-więc treści pochodzą z publicznych wyników wyszukiwania. Należy podmienić / zweryfikować:
-- [ ] `assets/img/bozena-slominska.jpg` – zdjęcie terapeutki (do tego czasu wyświetlane są inicjały „BS”)
-- [ ] `assets/img/logo.svg`, `assets/img/favicon.svg` – oryginalne logo (obecnie tymczasowy znak)
-- [ ] pozostałe zdjęcia i ikony z oryginału
-- [ ] pełne teksty podstron: „o mnie”, „orientacja teoretyczna”, „formy pomocy” (indywidualna, grupowa, terapia par) – obecnie wersje skrócone
-- [ ] aktualność cennika
+- `assets/img/` – zdjęcia i logotypy z oryginalnej strony; `drzewo.png` to logo (drzewo) wycięte z oryginalnego nagłówka
