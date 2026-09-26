@@ -633,7 +633,7 @@ PIERWSZA = f"""
           <p>Opłata za spotkanie jest zgodna z <a href="cennik.html">cennikiem</a>. W uzasadnionych przypadkach można liczyć na zniżkę lub raty.</p>
 
           <h2>Pozostałe zasady</h2>
-          {ul(['Między sesjami kontaktujemy się w sprawach organizacyjnych; ważne tematy omawiamy podczas spotkań.', 'Na sesję przychodzimy trzeźwi – spotkanie nie odbywa się pod wpływem alkoholu ani innych substancji psychoaktywnych.', 'Decyzję o zakończeniu terapii warto omówić na sesji – dobrym zwyczajem jest spotkanie podsumowujące.', 'Psychoterapia nie zastępuje leczenia farmakologicznego – gdy jest to potrzebne, współpracuję z lekarzami psychiatrami.'])}
+          {ul(['Między sesjami kontaktujemy się w sprawach organizacyjnych; ważne tematy omawiamy podczas spotkań.', 'Na sesję przychodzimy trzeźwi – spotkanie nie odbywa się pod wpływem alkoholu ani innych substancji psychoaktywnych.', 'Decyzję o zakończeniu terapii warto omówić na sesji – dobrym zwyczajem jest spotkanie podsumowujące.'])}
         </div>
         <aside class="article-aside">
           {figure('gabinet.jpg', 'Gabinet ALTER EGO w Toruniu')}
