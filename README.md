@@ -22,7 +22,6 @@ Statyczny serwis (HTML + CSS + odrobina JS). Nie wymaga budowania – wystarczy 
 | `pierwsza-wizyta.html` | *nowa* – pierwsza wizyta, zasady współpracy, pomoc w kryzysie |
 | `polityka-prywatnosci.html` | *nowa* – polityka prywatności (RODO) |
 | `kontakt.html` | kontakt |
-| – | aktualności → link do profilu na Facebooku (jak w oryginale) |
 
 ## Udogodnienia
 - **Mapa Google** z lokalizacją gabinetu na stronie głównej (sekcja „Dojazd i kontakt”) i na stronie Kontakt –

@@ -27,7 +27,6 @@ VCARD = "assets/alter-ego-bozena-slominska.vcf"
 # (file, label) – order as in the original menu
 NAV = [
     ("index.html", "alter ego"),
-    (FACEBOOK, "aktualności"),
     ("komu-pomagam.html", "komu pomagam"),
     ("formy-pomocy.html", "formy pomocy"),
     ("oferta-szkoleniowa.html", "oferta szkoleniowa"),
