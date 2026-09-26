@@ -37,6 +37,37 @@
     });
   });
 
+  // Google map – loaded only after the visitor agrees (remembered in this browser)
+  var MAP_KEY = 'alterego-map-consent';
+  function storageGet() { try { return localStorage.getItem(MAP_KEY); } catch (e) { return null; } }
+  function storageSet(v) { try { v ? localStorage.setItem(MAP_KEY, v) : localStorage.removeItem(MAP_KEY); } catch (e) {} }
+  function loadMap(box) {
+    if (box.classList.contains('loaded')) return;
+    var f = document.createElement('iframe');
+    f.src = box.getAttribute('data-map-src');
+    f.title = 'Mapa – ALTER EGO, Szosa Chełmińska 154E, Toruń';
+    f.loading = 'lazy';
+    f.referrerPolicy = 'no-referrer-when-downgrade';
+    f.allowFullscreen = true;
+    box.appendChild(f);
+    box.classList.add('loaded');
+  }
+  var maps = document.querySelectorAll('[data-map-src]');
+  maps.forEach(function (box) {
+    if (storageGet() === '1') loadMap(box);
+    box.querySelector('[data-map-load]').addEventListener('click', function () {
+      storageSet('1');
+      maps.forEach(loadMap);
+    });
+  });
+  document.querySelectorAll('[data-map-revoke]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      storageSet(null);
+      btn.textContent = 'Zapisano – mapa nie będzie wyświetlana automatycznie';
+      btn.disabled = true;
+    });
+  });
+
   // Gentle reveal of sections
   if ('IntersectionObserver' in window) {
     var items = document.querySelectorAll('.section > .container');

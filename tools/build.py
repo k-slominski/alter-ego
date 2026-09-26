@@ -35,6 +35,7 @@ NAV = [
     ("wspolpracuje.html", "współpracuję"),
     ("orientacja-teoretyczna.html", "orientacja teoretyczna"),
     ("cennik.html", "cennik"),
+    ("pierwsza-wizyta.html", "pierwsza wizyta"),
     ("kontakt.html", "kontakt"),
 ]
 
@@ -46,6 +47,7 @@ ICON = {
     "route": '<svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="19" r="2"/><circle cx="18" cy="5" r="2"/><path d="M8 19h8.5a3.5 3.5 0 0 0 0-7h-9a3.5 3.5 0 0 1 0-7H16"/></svg>',
     "card": '<svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1.5"/><circle cx="9" cy="11" r="2"/><path d="M5.5 16c.6-1.6 2-2.5 3.5-2.5s2.9.9 3.5 2.5M15 10h3M15 13h3"/></svg>',
     "copy": '<svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="1.5"/><path d="M16 8V5.5A1.5 1.5 0 0 0 14.5 4h-9A1.5 1.5 0 0 0 4 5.5v9A1.5 1.5 0 0 0 5.5 16H8"/></svg>',
+    "lifebuoy": '<svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><path d="M5.6 5.6l3.6 3.6M14.8 14.8l3.6 3.6M18.4 5.6l-3.6 3.6M9.2 14.8l-3.6 3.6"/></svg>',
     "arrow": '<svg class="i i-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>',
 }
 
@@ -61,10 +63,15 @@ def nav_html(current):
 
 
 def map_frame():
-    return f"""<div class="map">
-          <iframe title="Mapa – ALTER EGO, Szosa Chełmińska 154E, Toruń"
-            src="{MAP_EMBED}"
-            loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+    # The Google map is loaded only after the visitor clicks (privacy / RODO).
+    return f"""<div class="map" data-map-src="{MAP_EMBED}">
+          <div class="map-placeholder">
+            <img src="assets/img/drzewo.png" alt="" width="56" height="52">
+            <p class="map-address">Szosa Chełmińska 154E/2<br>87-100 Toruń</p>
+            <button type="button" class="btn btn-primary" data-map-load>{ICON['pin']} Pokaż mapę Google</button>
+            <p class="map-note">Wyświetlenie mapy łączy się z serwerami Google, które mogą zapisać pliki cookies.
+              <a href="polityka-prywatnosci.html#mapa">Więcej informacji</a></p>
+          </div>
         </div>"""
 
 
@@ -123,9 +130,7 @@ def layout(filename, title, description, body, eyebrow=None, heading=None, lead=
   <meta property="og:url" content="{SITE_URL}{'' if filename == 'index.html' else filename}">
   <meta property="og:image" content="{SITE_URL}assets/img/bozena-slominska-portret.jpg">
   <meta name="theme-color" content="#f8f7f3">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/fonts/fonts.css">
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="icon" href="assets/img/favicon.png" type="image/png">
   <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
@@ -184,8 +189,14 @@ def layout(filename, title, description, body, eyebrow=None, heading=None, lead=
         </a>
       </div>
     </div>
+    <div class="container footer-crisis">
+      <p>{ICON['lifebuoy']}<span><strong>W sytuacji zagrożenia życia</strong> dzwoń pod <a href="tel:112">112</a>.
+        Całodobowe Centrum Wsparcia dla osób w kryzysie psychicznym: <a href="tel:800702222">800 70 2222</a> ·
+        <a href="pierwsza-wizyta.html#pomoc-w-kryzysie">więcej telefonów zaufania</a></span></p>
+    </div>
     <div class="container footer-bottom">
       <p>© Alter Ego - Toruń Psychoterapia</p>
+      <p><a href="polityka-prywatnosci.html">Polityka prywatności</a></p>
     </div>
   </footer>
 
@@ -227,6 +238,7 @@ HOME = f"""
             <a href="{PHONE_HREF}" class="btn btn-primary">{ICON['phone']} {PHONE}</a>
             <a href="mailto:{EMAIL}" class="btn btn-ghost">{ICON['mail']} Napisz wiadomość</a>
           </div>
+          <p class="hero-more"><a href="pierwsza-wizyta.html">Jak wygląda pierwsza wizyta? {ICON['arrow']}</a></p>
         </div>
         <figure class="hero-photo">
           <img src="assets/img/bozena-slominska-portret.jpg" alt="Bożena Słomińska – psychoterapeuta" width="1200" height="1200">
@@ -557,6 +569,7 @@ CENNIK = f"""
           </div>
         </dl>
         <p class="note">W uzasadnionych przypadkach można liczyć na zniżkę lub raty.</p>
+        <p class="muted">Zasady odwoływania i przekładania spotkań: <a href="pierwsza-wizyta.html#odwolywanie">pierwsza wizyta i zasady współpracy</a>.</p>
         <div class="account">
           <span class="eyebrow">Numer konta</span>
           <div class="account-row">
@@ -593,6 +606,102 @@ KONTAKT = f"""
     </section>
 """
 
+PIERWSZA = f"""
+    <section class="section section-tight">
+      <div class="container article">
+        <div class="article-body">
+          <h2>Jak umówić wizytę</h2>
+          <p>Na spotkanie można umówić się telefonicznie – <a href="{PHONE_HREF}">{PHONE}</a> – lub mailowo – <a href="mailto:{EMAIL}">{EMAIL}</a>. Gdy nie mogę odebrać, oddzwaniam. Skierowanie nie jest potrzebne.</p>
+
+          <h2>Pierwsze spotkanie</h2>
+          <p>Pierwsze spotkanie ma charakter konsultacji i trwa do 50 minut. Rozmawiamy o tym, co skłoniło Cię do szukania pomocy, jakie masz oczekiwania i czego potrzebujesz. Nie trzeba się do niego specjalnie przygotowywać – wystarczy przyjść i opowiedzieć o sobie tyle, ile chcesz.</p>
+          <p>Zwykle potrzeba od jednego do kilku spotkań konsultacyjnych. Na ich podstawie wspólnie decydujemy, czy i w jakiej formie podjąć dalszą pracę – psychoterapii indywidualnej, terapii par, psychoterapii grupowej, poradnictwa czy interwencji kryzysowej.</p>
+
+          <h2>Kontrakt terapeutyczny</h2>
+          <p>Przed rozpoczęciem psychoterapii ustalamy wspólnie zasady współpracy (kontrakt):</p>
+          {ul(['cel terapii – to, nad czym chcemy pracować,', 'częstotliwość spotkań – zwykle raz w tygodniu, w stałym dniu i o stałej godzinie,', 'czas trwania sesji – 50 minut,', 'wysokość i sposób opłaty,', 'zasady odwoływania spotkań i przerw urlopowych.'])}
+
+          <h2>Poufność</h2>
+          <p>Wszystko, co zostanie powiedziane podczas spotkań, objęte jest tajemnicą zawodową. Nie przekazuję nikomu informacji o tym, że ktoś korzysta z pomocy w gabinecie, ani o treści rozmów.</p>
+          <p>Wyjątki od tej zasady przewidują przepisy prawa – przede wszystkim sytuacje bezpośredniego zagrożenia życia lub zdrowia klienta albo innych osób.</p>
+          <p>W trosce o jakość pracy korzystam z superwizji i zawodowych konsultacji – omawiane sytuacje są przedstawiane w sposób, który nie pozwala rozpoznać klienta.</p>
+
+          <h2 id="odwolywanie">Odwoływanie i przekładanie spotkań</h2>
+          {ul(['Jeśli nie możesz przyjść, odwołaj lub przełóż spotkanie najpóźniej 24 godziny wcześniej – telefonicznie, SMS-em lub mailowo.', 'Spotkanie odwołane później lub nieodwołane jest płatne jak sesja.', 'Spóźnienie nie wydłuża sesji – kończy się ona o ustalonej godzinie.', 'O planowanych przerwach (np. urlopowych) informujemy się nawzajem z wyprzedzeniem.'])}
+
+          <h2>Opłaty</h2>
+          <p>Opłata za spotkanie jest zgodna z <a href="cennik.html">cennikiem</a>. W uzasadnionych przypadkach można liczyć na zniżkę lub raty.</p>
+
+          <h2>Pozostałe zasady</h2>
+          {ul(['Między sesjami kontaktujemy się w sprawach organizacyjnych; ważne tematy omawiamy podczas spotkań.', 'Na sesję przychodzimy trzeźwi – spotkanie nie odbywa się pod wpływem alkoholu ani innych substancji psychoaktywnych.', 'Decyzję o zakończeniu terapii warto omówić na sesji – dobrym zwyczajem jest spotkanie podsumowujące.', 'Psychoterapia nie zastępuje leczenia farmakologicznego – gdy jest to potrzebne, współpracuję z lekarzami psychiatrami.'])}
+        </div>
+        <aside class="article-aside">
+          {figure('gabinet.jpg', 'Gabinet ALTER EGO w Toruniu')}
+        </aside>
+      </div>
+    </section>
+
+    <section class="section section-tight section-alt" id="pomoc-w-kryzysie">
+      <div class="container narrow">
+        <h2>Pomoc w kryzysie</h2>
+        <p>Gabinet nie jest miejscem pomocy doraźnej. Jeśli Twoje życie lub zdrowie albo życie innej osoby jest zagrożone, nie czekaj na wizytę – skorzystaj z pomocy od razu:</p>
+        <dl class="hotlines">
+          <div><dt><a href="tel:112">112</a></dt><dd>numer alarmowy – w sytuacji bezpośredniego zagrożenia życia</dd></div>
+          <div><dt><a href="tel:800702222">800 70 2222</a></dt><dd>Centrum Wsparcia dla Osób Dorosłych w Kryzysie Psychicznym – bezpłatnie, całodobowo</dd></div>
+          <div><dt><a href="tel:116123">116 123</a></dt><dd>Kryzysowy Telefon Zaufania dla osób dorosłych – bezpłatnie</dd></div>
+          <div><dt><a href="tel:116111">116 111</a></dt><dd>Telefon Zaufania dla Dzieci i Młodzieży – bezpłatnie, całodobowo</dd></div>
+        </dl>
+        <p class="muted">Można też zgłosić się bezpośrednio na izbę przyjęć najbliższego szpitala psychiatrycznego lub do szpitalnego oddziału ratunkowego.</p>
+      </div>
+    </section>
+"""
+
+PRYWATNOSC = f"""
+    <section class="section section-tight">
+      <div class="container narrow legal">
+        <h2>1. Administrator danych</h2>
+        <p>Administratorem danych osobowych jest Bożena Słomińska, prowadząca ALTER EGO Gabinet Psychoterapii i Rozwoju Osobistego, Szosa Chełmińska 154E/2, 87-100 Toruń. Kontakt: <a href="mailto:{EMAIL}">{EMAIL}</a>, tel. {PHONE}.</p>
+
+        <h2>2. Jakie dane przetwarzam i w jakim celu</h2>
+        {ul(['<strong>Kontakt telefoniczny i mailowy</strong> – imię, nazwisko, numer telefonu, adres e-mail i treść wiadomości, w celu odpowiedzi i umówienia spotkania (art. 6 ust. 1 lit. b i f RODO).', '<strong>Psychoterapia i konsultacje</strong> – informacje przekazane podczas spotkań, w tym dotyczące zdrowia, w zakresie niezbędnym do udzielania pomocy psychologicznej; są one objęte tajemnicą zawodową (art. 9 ust. 2 lit. h RODO).', '<strong>Rozliczenia</strong> – dane niezbędne do wystawienia dokumentów księgowych (art. 6 ust. 1 lit. c RODO).'])}
+
+        <h2>3. Jak długo przechowuję dane</h2>
+        <p>Dane przechowuję przez czas potrzebny do realizacji celu, w którym zostały zebrane, a po jego zakończeniu – przez okres wymagany przepisami prawa (np. podatkowymi) lub do czasu przedawnienia ewentualnych roszczeń.</p>
+
+        <h2>4. Komu przekazuję dane</h2>
+        <p>Nie sprzedaję ani nie udostępniam danych innym podmiotom. Dostęp do nich mogą mieć wyłącznie dostawcy usług, z których korzystam (np. poczty elektronicznej, hostingu strony, biura rachunkowego) – w zakresie niezbędnym do świadczenia tych usług – oraz organy uprawnione na podstawie przepisów prawa.</p>
+
+        <h2>5. Twoje prawa</h2>
+        <p>Masz prawo dostępu do swoich danych, ich sprostowania, usunięcia, ograniczenia przetwarzania, przeniesienia oraz wniesienia sprzeciwu. Przysługuje Ci także prawo wniesienia skargi do Prezesa Urzędu Ochrony Danych Osobowych (ul. Stawki 2, 00-193 Warszawa).</p>
+
+        <h2>6. Strona internetowa i pliki cookies</h2>
+        <p>Strona nie korzysta z plików cookies ani z narzędzi analitycznych i nie zbiera danych przez formularze. Czcionki są wczytywane z tego samego serwera co strona. Serwer, na którym działa strona, może – jak każdy serwer – zapisywać techniczne logi (np. adres IP, datę wizyty), wykorzystywane wyłącznie do zapewnienia jego działania i bezpieczeństwa.</p>
+
+        <h3 id="mapa">Mapa Google</h3>
+        <p>Mapa z lokalizacją gabinetu jest wczytywana dopiero po kliknięciu przycisku „Pokaż mapę Google”. Wówczas przeglądarka łączy się z serwerami Google Ireland Ltd., które mogą przetwarzać Twój adres IP i zapisywać pliki cookies zgodnie z <a href="https://policies.google.com/privacy?hl=pl" target="_blank" rel="noopener">polityką prywatności Google</a>. Twój wybór jest zapamiętywany wyłącznie w Twojej przeglądarce; możesz go w każdej chwili wycofać:</p>
+        <p><button type="button" class="btn btn-ghost btn-sm" data-map-revoke>Nie wyświetlaj mapy automatycznie</button></p>
+
+        <h3>Linki zewnętrzne</h3>
+        <p>Strona zawiera odnośniki do innych serwisów (np. Facebook, Mapy Google, strony organizacji, z którymi współpracuję). Po przejściu do nich obowiązują zasady prywatności tych serwisów.</p>
+
+        <p class="muted">Ostatnia aktualizacja: wrzesień 2026.</p>
+      </div>
+    </section>
+"""
+
+NOT_FOUND = """
+    <section class="section section-tight">
+      <div class="container narrow">
+        <p>Strona, której szukasz, nie istnieje lub zmieniła adres.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="index.html">Strona główna</a>
+          <a class="btn btn-ghost" href="kontakt.html">Kontakt</a>
+        </div>
+      </div>
+    </section>
+"""
+
+
 PAGES = [
     ("index.html", None,
      "Gabinet Psychoterapii i Rozwoju Osobistego ALTER EGO w Toruniu. Bożena Słomińska – psychoterapia indywidualna, grupowa, terapia par, poradnictwo, interwencja kryzysowa, treningi.",
@@ -618,23 +727,16 @@ PAGES = [
     ("cennik.html", "cennik",
      "Cennik: konsultacja, psychoterapia indywidualna, terapia par, psychoterapia grupowa, warsztaty i treningi.",
      CENNIK, "alter ego", "Cennik", None),
+    ("pierwsza-wizyta.html", "pierwsza wizyta",
+     "Pierwsza wizyta w gabinecie ALTER EGO: jak się umówić, jak wygląda konsultacja, kontrakt terapeutyczny, poufność, zasady odwoływania spotkań, pomoc w kryzysie.",
+     PIERWSZA, "alter ego", "Pierwsza wizyta i zasady współpracy", None),
+    ("polityka-prywatnosci.html", "polityka prywatności",
+     "Polityka prywatności gabinetu ALTER EGO – administrator danych, cele przetwarzania, prawa osób, pliki cookies i mapa Google.",
+     PRYWATNOSC, "alter ego", "Polityka prywatności", None),
     ("kontakt.html", "kontakt",
      "Kontakt: ALTER EGO, Bożena Słomińska, Szosa Chełmińska 154E/2, 87-100 Toruń, tel. 609 881 788, kontakt@alterego-torun.pl.",
      KONTAKT, "alter ego", "Kontakt", None),
 ]
-
-
-NOT_FOUND = """
-    <section class="section section-tight">
-      <div class="container narrow">
-        <p>Strona, której szukasz, nie istnieje lub zmieniła adres.</p>
-        <div class="actions">
-          <a class="btn btn-primary" href="index.html">Strona główna</a>
-          <a class="btn btn-ghost" href="kontakt.html">Kontakt</a>
-        </div>
-      </div>
-    </section>
-"""
 
 
 def main():

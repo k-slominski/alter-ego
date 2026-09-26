@@ -19,20 +19,33 @@ Statyczny serwis (HTML + CSS + odrobina JS). Nie wymaga budowania – wystarczy 
 | `wspolpracuje.html` | współpracuję |
 | `orientacja-teoretyczna.html` | orientacja teoretyczna |
 | `cennik.html` | cennik |
+| `pierwsza-wizyta.html` | *nowa* – pierwsza wizyta, zasady współpracy, pomoc w kryzysie |
+| `polityka-prywatnosci.html` | *nowa* – polityka prywatności (RODO) |
 | `kontakt.html` | kontakt |
 | – | aktualności → link do profilu na Facebooku (jak w oryginale) |
 
 ## Udogodnienia
-- **Mapa Google** z lokalizacją gabinetu na stronie głównej (sekcja „Dojazd i kontakt”) i na stronie Kontakt
+- **Mapa Google** z lokalizacją gabinetu na stronie głównej (sekcja „Dojazd i kontakt”) i na stronie Kontakt –
+  wczytywana dopiero po kliknięciu „Pokaż mapę Google” (RODO); wybór zapamiętywany w przeglądarce,
+  można go wycofać na stronie Polityka prywatności
 - przycisk **„Wyznacz trasę”** – otwiera nawigację Google Maps do gabinetu (także w stopce)
 - **pasek szybkiego kontaktu** na telefonach: Zadzwoń / Dojazd / E-mail
 - **„Zapisz kontakt w telefonie”** – wizytówka `assets/alter-ego-bozena-slominska.vcf`
 - przycisk **„Kopiuj”** przy numerze konta w cenniku
 - dane strukturalne schema.org (adres, telefon, położenie) – lepsza widoczność w Google i Mapach
+- **telefony zaufania** w stopce każdej strony i na stronie „Pierwsza wizyta”
+- czcionki (Cormorant Garamond, Inter – licencja SIL Open Font License) hostowane lokalnie w `assets/fonts/` –
+  strona nie łączy się z Google, dopóki odwiedzający nie wybierze mapy
 - podgląd przy udostępnianiu linku (Open Graph), `sitemap.xml`, `robots.txt`, strona `404.html`
 
 Adres `https://www.alterego-torun.pl/` jest wpisany w `tools/build.py` (`SITE_URL`) –
 zmień go, jeśli strona będzie działać pod innym adresem.
+
+## Do sprawdzenia przez właścicielkę
+- **Zasady współpracy** na stronie „Pierwsza wizyta” (np. odwoływanie spotkań 24 h wcześniej, płatność
+  za nieodwołaną sesję) to standardowe zasady gabinetów psychoterapii – należy je potwierdzić lub dostosować.
+- **Polityka prywatności** to wzór – warto, by sprawdziła ją osoba znająca RODO.
+- **Numery telefonów zaufania** warto co jakiś czas weryfikować.
 
 ## Edycja treści
 Wspólny nagłówek, menu i stopka są generowane skryptem – treść stron znajduje się w
